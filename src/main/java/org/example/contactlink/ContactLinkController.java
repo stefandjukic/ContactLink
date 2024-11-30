@@ -15,10 +15,8 @@ public class ContactLinkController {
     private VCardService vCardService;
 
     @GetMapping("/generate-vcard")
-    public ResponseEntity<byte[]> generateVCard(@RequestParam String name,
-                                                @RequestParam String phone,
-                                                @RequestParam String email) {
-        String vCard = vCardService.generateVCard(name, phone, email);
+    public ResponseEntity<byte[]> generateVCard() {
+        String vCard = vCardService.generateVCard("IME", "064", "MAIL");
         byte[] vCardBytes = vCard.getBytes();
 
         HttpHeaders headers = new HttpHeaders();
