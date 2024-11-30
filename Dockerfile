@@ -1,11 +1,9 @@
-# Use a base image with Tomcat
-FROM tomcat:9.0
+FROM maven:3.8.3-openjdk-11-slim AS build
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Copy the WAR file into the webapps directory of Tomcat
-COPY target/ContactLink.war /usr/local/tomcat/webapps/
-
-# Expose the port Tomcat runs on
+FROM openjdk:11-jre-slim
+COPY --from=build /app/target/ContactLink.jar /ContactLink.jar
 EXPOSE 8080
-
-# Define the command to run Tomcat
-CMD ["catalina.sh", "run"]
+CMD ["java", "-jar", "/ContactLink.jar"]
