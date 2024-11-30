@@ -3,7 +3,7 @@ WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-FROM openjdk:11-jre-slim
+FROM openjdk:17-jre-slim
 COPY --from=build /app/target/ContactLink.jar /ContactLink.jar
 EXPOSE 8080
 CMD ["java", "-jar", "/ContactLink.jar"]
