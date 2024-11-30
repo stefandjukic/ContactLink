@@ -13,7 +13,7 @@ public class VCardService {
                 "EMAIL:" + email + "\n" +
                 "TITLE:" + jobTitle + "\n" +
                 "ORG:" + companyName + "\n" +
-                "URL:https://www.unicredit.ba/ba/stanovnistvo.html#home\n" +
+                "URL:https://www.unicredit.ba\n" +
                 "PHOTO;ENCODING=BASE64;TYPE=JPEG:" + base64Picture + "\n" +
                 "END:VCARD";
 
